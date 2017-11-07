@@ -1,0 +1,486 @@
+doctype html
+html(lang='en')
+	head
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		meta(charset='utf-8')
+		title benhly
+		meta(name='description', content='')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+		// bootstrap -- fontawesome
+		link(rel='stylesheet', href='/assets1/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/assets1/font-awesome/4.5.0/css/font-awesome.min.css')
+		// page specific plugin styles
+		link(rel='stylesheet', href='/assets1/css/bootstrap-duallistbox.min.css')
+		link(rel='stylesheet', href='/assets1/css/bootstrap-multiselect.min.css')
+		link(rel='stylesheet', href='/assets1/css/select2.min.css')
+		// text fonts
+		link(rel='stylesheet', href='/assets1/css/fonts.googleapis.com.css')
+		// ace styles
+		link#main-ace-style.ace-main-stylesheet(rel='stylesheet', href='/assets1/css/ace.min.css')
+		link(rel='stylesheet', href='/assets1/css/ace-skins.min.css')
+		link(rel='stylesheet', href='/assets1/css/ace-rtl.min.css')
+		script(src='/assets1/js/ace-extra.min.js')
+	body.no-skin
+		#navbar.navbar.navbar-default.ace-save-state
+			#navbar-container.navbar-container.ace-save-state
+				button#menu-toggler.navbar-toggle.menu-toggler.pull-left(type='button', data-target='#sidebar')
+					span.sr-only Toggle sidebar
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				.navbar-header.pull-left
+					a.navbar-brand(href='index.html')
+						small
+							i.fa.fa-leaf
+							| 							Ace Admin
+				.navbar-buttons.navbar-header.pull-right(role='navigation')
+					ul.nav.ace-nav
+						
+						li.light-blue.dropdown-modal
+							a.dropdown-toggle(data-toggle='dropdown', href='#')
+								span.user-info
+								|	#{admin.email}
+								i.ace-icon.fa.fa-caret-down
+							ul.user-menu.dropdown-menu-right.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-close
+								li
+									a(href='/admin/logout')
+										i.ace-icon.fa.fa-power-off
+										|  Logout
+			// /.navbar-container
+		#main-container.main-container.ace-save-state
+			script(type='text/javascript').
+				try{ace.settings.loadState('main-container')}catch(e){}
+			#sidebar.sidebar.responsive.ace-save-state
+				script(type='text/javascript').
+					try{ace.settings.loadState('sidebar')}catch(e){}
+				#sidebar-shortcuts.sidebar-shortcuts
+					#sidebar-shortcuts-large.sidebar-shortcuts-large
+						button.btn.btn-success
+							i.ace-icon.fa.fa-signal
+						button.btn.btn-info
+							i.ace-icon.fa.fa-pencil
+						button.btn.btn-warning
+							i.ace-icon.fa.fa-users
+						button.btn.btn-danger
+							i.ace-icon.fa.fa-cogs
+					#sidebar-shortcuts-mini.sidebar-shortcuts-mini
+						span.btn.btn-success
+						span.btn.btn-info
+						span.btn.btn-warning
+						span.btn.btn-danger
+				// /.sidebar-shortcuts
+				ul.nav.nav-list
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-list
+							span.menu-text Sản phẩm
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/categoryproduct')
+									i.menu-icon.fa.fa-caret-right
+									|  Danh mục sản phẩm
+								b.arrow
+							li
+								a(href='/admin/product')
+									i.menu-icon.fa.fa-caret-right
+									|  Sản phẩm
+								b.arrow
+							li
+								a(href='/admin/addproduct')
+									i.menu-icon.fa.fa-caret-right
+									|  Thêm sản phẩm
+								b.arrow
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-pencil-square-o
+							span.menu-text Quản lý bệnh  
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li.active
+								a(href='/admin/benhly')
+									i.menu-icon.fa.fa-caret-right
+									|  Bệnh lý
+								b.arrow
+							li
+								a(href='/admin/categorytc')
+									i.menu-icon.fa.fa-caret-right
+									| Danh mục triệu chứng
+								b.arrow
+							li
+								a(href='/admin/trieuchung')
+									i.menu-icon.fa.fa-caret-right
+									|  Triệu chứng
+								b.arrow
+							li
+								a(href='/admin/cart/1')
+									i.menu-icon.fa.fa-caret-right
+									|  Quản lý hóa đơn
+								b.arrow
+							li
+								a(href='/admin/managefeedback/1')
+									i.menu-icon.fa.fa-caret-right
+									|  Quản lý phản hồi
+								b.arrow
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-users
+							span.menu-text Quản lý người dùng 
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/manageuser')
+									i.menu-icon.fa.fa-caret-right
+									|  Người dùng
+								b.arrow
+							li
+								a(href='/admin/manageadmin')
+									i.menu-icon.fa.fa-caret-right
+									|  admin
+								b.arrow
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-truck
+							span.menu-text  Quản lý dịch vụ
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/khuvuc')
+									i.menu-icon.fa.fa-caret-right
+									| Khu vực
+								b.arrow
+							li
+								a(href='/admin/nhavc')
+									i.menu-icon.fa.fa-caret-right
+									| Nhà vận chuyển
+								b.arrow
+							li
+								a(href='/admin/dichvu/1')
+									i.menu-icon.fa.fa-caret-right
+									| Dịch vụ
+								b.arrow
+				#sidebar-collapse.sidebar-toggle.sidebar-collapse
+					i#sidebar-toggle-icon.ace-icon.fa.fa-angle-double-left.ace-save-state(data-icon1='ace-icon fa fa-angle-double-left', data-icon2='ace-icon fa fa-angle-double-right')
+			.main-content
+				.main-content-inner
+					#breadcrumbs.breadcrumbs.ace-save-state
+						ul.breadcrumb
+							li
+								i.ace-icon.fa.fa-home.home-icon
+								a(href='#') Home
+							li
+								a(href='#') Forms
+							li.active Form Elements 2
+						// /.breadcrumb
+						#nav-search.nav-search
+							form.form-search
+								span.input-icon
+									input#nav-search-input.nav-search-input(type='text', placeholder='Search ...', autocomplete='off')
+									i.ace-icon.fa.fa-search.nav-search-icon
+						// /.nav-search
+					.page-content
+						#ace-settings-container.ace-settings-container
+							#ace-settings-btn.btn.btn-app.btn-xs.btn-warning.ace-settings-btn
+								i.ace-icon.fa.fa-cog.bigger-130
+							#ace-settings-box.ace-settings-box.clearfix
+								.pull-left.width-50
+									.ace-settings-item
+										.pull-left
+											select#skin-colorpicker.hide
+												option(data-skin='no-skin', value='#438EB9') #438EB9
+												option(data-skin='skin-1', value='#222A2D') #222A2D
+												option(data-skin='skin-2', value='#C6487E') #C6487E
+												option(data-skin='skin-3', value='#D0D0D0') #D0D0D0
+										span   Choose Skin
+									.ace-settings-item
+										input#ace-settings-navbar.ace.ace-checkbox-2.ace-save-state(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-navbar')  Fixed Navbar
+									.ace-settings-item
+										input#ace-settings-sidebar.ace.ace-checkbox-2.ace-save-state(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-sidebar')  Fixed Sidebar
+									.ace-settings-item
+										input#ace-settings-breadcrumbs.ace.ace-checkbox-2.ace-save-state(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-breadcrumbs')  Fixed Breadcrumbs
+									.ace-settings-item
+										input#ace-settings-rtl.ace.ace-checkbox-2(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-rtl')  Right To Left (rtl)
+									.ace-settings-item
+										input#ace-settings-add-container.ace.ace-checkbox-2.ace-save-state(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-add-container')
+											| Inside
+											b .container
+								// /.pull-left
+								.pull-left.width-50
+									.ace-settings-item
+										input#ace-settings-hover.ace.ace-checkbox-2(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-hover')  Submenu on Hover
+									.ace-settings-item
+										input#ace-settings-compact.ace.ace-checkbox-2(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-compact')  Compact Sidebar
+									.ace-settings-item
+										input#ace-settings-highlight.ace.ace-checkbox-2(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-highlight')  Alt. Active Item
+								// /.pull-left
+							// /.ace-settings-box
+						// /.ace-settings-container
+						.page-header
+							h1
+								b Bệnh lý
+						// /.page-header
+						.row
+							.col-xs-12
+								// PAGE CONTENT BEGINS
+								table#simple-table.table.table-bordered.table-hover
+									thead
+										tr
+											th.detail-col STT
+											th Tên bệnh lý
+											th Triệu chứng
+											th
+									tbody
+										each benhly, i in benhlies
+											tr
+												td.center #{i+1}
+												td 
+													a(href='/admin/chandoan/#{benhly._id}') #{benhly.ten}
+												td
+													each tc, a in benhly.chandoan
+														each trieuchung, b in trieuchungs
+															if(trieuchung.id == tc.idtrieuchung)
+																span
+																|  #{trieuchung.ten},
+												td
+													.hidden-sm.hidden-xs.btn-group
+														button.btn.btn-xs.btn-info(onclick="location.href='/admin/updatebenhly/#{benhly._id}'")
+															i.ace-icon.fa.fa-pencil.bigger-120
+														button.btn.btn-xs.btn-danger(onclick="location.href='/admin/removebenhly/#{benhly._id}'")
+															i.ace-icon.fa.fa-trash-o.bigger-120
+														button.btn.btn-xs.btn-warning(onclick="location.href='/admin/ketoa/#{benhly._id}&1'")
+															i.ace-icon.fa.fa-pencil-square-o.bigger-120
+													.hidden-md.hidden-lg
+														.inline.pos-rel
+															button.btn.btn-minier.btn-primary.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+																i.ace-icon.fa.fa-cog.icon-only.bigger-110
+															ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+																li
+																	a.tooltip-info(href='#', data-rel='tooltip', title='View')
+																		span.blue
+																			i.ace-icon.fa.fa-search-plus.bigger-120
+																li
+																	a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+																		span.green
+																			i.ace-icon.fa.fa-pencil-square-o.bigger-120
+																li
+																	a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+																		span.red
+																			i.ace-icon.fa.fa-trash-o.bigger-120
+								.row
+									.col-md-7
+										h1 Thêm bệnh lý mới
+										br
+										form(action='/admin/benhly/add', method='post')
+											.form-group
+												h4 Tên bệnh lý:
+												input.form-control(type='text' name='ten')
+											.form-group
+												h4 Triệu chứng:
+												textarea.form-control(rows='3', type='text', name='trieuchung')
+											.form-group
+												h4 Điều trị:
+												textarea.form-control(rows='3', type='text', name='dieutri')
+											button.btn.btn-primary(style='float: right;', type='submit') Thêm bệnh lý
+									if (idbenh != '1')
+										.col-md-5
+											h1 Chuẩn đoán
+											form.form-horizontal(role='form' action='/admin/benhly/addtc' method='post')
+												.form-group
+													.col-xs-12.col-sm-9
+														input(name='id' type='hidden' value='#{idbenh}')
+														select#food.multiselect(multiple='', style='display: none;', name='tc')
+															each trieuchung, i in trieuchungs
+																option(value='#{trieuchung._id}') #{trieuchung.ten}
+												button.btn.btn-primary(style='float: right;', type='submit') Thêm triệu chứng
+								if (idbenh != '1')
+									each benhly, i in benhlies
+										if (benhly.id == idbenh)
+											.col-md-7
+												h1 Chỉnh sửa thông tin
+												br
+												form(action='/admin/benhly/update', method='post')
+													.form-group
+														h4 Tên bệnh lý:
+														input.form-control(type='text' name='ten' value='#{benhly.ten}')
+														input(name='id' type='hidden' value='#{idbenh}')
+													.form-group
+														h4 Triệu chứng:
+														textarea.form-control(rows='3', type='text', name='trieuchung') #{benhly.trieuchung}
+													.form-group
+														h4 Điều trị:
+														textarea.form-control(rows='3', type='text', name='dieutri') #{benhly.dieutri}
+													button.btn.btn-primary(style='float: right;', type='submit') Update
+								// PAGE CONTENT ENDS
+							// /.col
+						// /.row
+					// /.page-content
+			// /.main-content
+			.footer
+				.footer-inner
+					.footer-content
+						span.bigger-120
+							span.blue.bolder Ace
+							| 							Application © 2013-2014
+						span.action-buttons
+							a(href='#')
+								i.ace-icon.fa.fa-twitter-square.light-blue.bigger-150
+							a(href='#')
+								i.ace-icon.fa.fa-facebook-square.text-primary.bigger-150
+							a(href='#')
+								i.ace-icon.fa.fa-rss-square.orange.bigger-150
+			a#btn-scroll-up.btn-scroll-up.btn.btn-sm.btn-inverse(href='#')
+				i.ace-icon.fa.fa-angle-double-up.icon-only.bigger-110
+		// /.main-container
+		// basic scripts
+		//if !IE
+
+		script(src='/assets1/js/jquery-2.1.4.min.js')
+		script(src='/assets1/js/jquery-1.11.3.min.js')
+		script(type='text/javascript').
+			if('ontouchstart' in document.documentElement)
+				document.write('<'+'script src=\'/assets1/js/jquery.mobile.custom.min.js\'>'+'<'+'/script>');
+		script(src='/assets1/js/bootstrap.min.js')
+		// page specific plugin scripts
+		script(src='/assets1/js/jquery.bootstrap-duallistbox.min.js')
+		script(src='/assets1/js/jquery.raty.min.js')
+		script(src='/assets1/js/bootstrap-multiselect.min.js')
+		script(src='/assets1/js/select2.min.js')
+		script(src='/assets1/js/jquery-typeahead.js')
+		// ace scripts
+		script(src='/assets1/js/ace-elements.min.js')
+		script(src='/assets1/js/ace.min.js')
+		// inline scripts related to this page
+		script(type='text/javascript').
+			jQuery(function($){
+			var demo1 = $('select[name="duallistbox_demo1[]"]').bootstrapDualListbox({infoTextFiltered: '<'+'span class="label label-purple label-lg">Filtered<'+'/span>'});
+			var container1 = demo1.bootstrapDualListbox('getContainer');
+			container1.find('.btn').addClass('btn-white btn-info btn-bold');
+			/**var setRatingColors = function() {
+			$(this).find('.star-on-png,.star-half-png').addClass('orange2').removeClass('grey');
+			$(this).find('.star-off-png').removeClass('orange2').addClass('grey');
+			}*/
+			$('.rating').raty({
+			'cancel' : true,
+			'half': true,
+			'starType' : 'i'
+			/**,
+			'click': function() {
+			setRatingColors.call(this);
+			},
+			'mouseover': function() {
+			setRatingColors.call(this);
+			},
+			'mouseout': function() {
+			setRatingColors.call(this);
+			}*/
+			})//.find('i:not(.star-raty)').addClass('grey');
+			//////////////////
+			//select2
+			$('.select2').css('width','200px').select2({allowClear:true})
+			$('#select2-multiple-style .btn').on('click', function(e){
+			var target = $(this).find('input[type=radio]');
+			var which = parseInt(target.val());
+			if(which == 2) $('.select2').addClass('tag-input-style');
+			else $('.select2').removeClass('tag-input-style');
+			});
+			//////////////////
+			$('.multiselect').multiselect({
+			enableFiltering: true,
+			enableHTML: true,
+			buttonClass: 'btn btn-white btn-primary',
+			templates: {
+			button: '<'+'button type="button" class="multiselect dropdown-toggle" data-toggle="dropdown"><'+'span class="multiselect-selected-text"><'+'/span> &nbsp;<'+'b class="fa fa-caret-down"><'+'/b><'+'/button>',
+			ul: '<'+'ul class="multiselect-container dropdown-menu"><'+'/ul>',
+			filter: '<'+'li class="multiselect-item filter"<'+'/li>',
+			filterClearBtn: '<'+'span class="input-group-btn"><'+'button class="btn btn-default btn-white btn-grey multiselect-clear-filter" type="button"><'+'i class="fa fa-times-circle red2"><'+'/i><'+'/button><'+'/span>',
+			li: '<'+'li><'+'a tabindex="0"><'+'label><'+'/label><'+'/a><'+'/li>',
+			divider: '<'+'li class="multiselect-item divider"><'+'/li>',
+			liGroup: '<'+'li class="multiselect-item multiselect-group"><'+'label><'+'/label><'+'/li>'
+			}
+			});
+			///////////////////
+			//typeahead.js
+			//example taken from plugin's page at: https://twitter.github.io/typeahead.js/examples/
+			var substringMatcher = function(strs) {
+			return function findMatches(q, cb) {
+			var matches, substringRegex;
+			// an array that will be populated with substring matches
+			matches = [];
+			// regex used to determine if a string contains the substring `q`
+			substrRegex = new RegExp(q, 'i');
+			// iterate through the pool of strings and for any string that
+			// contains the substring `q`, add it to the `matches` array
+			$.each(strs, function(i, str) {
+			if (substrRegex.test(str)) {
+			// the typeahead jQuery plugin expects suggestions to a
+			// JavaScript object, refer to typeahead docs for more info
+			matches.push({ value: str });
+			}
+			});
+			cb(matches);
+			}
+			}
+			$('input.typeahead').typeahead({
+			hint: true,
+			highlight: true,
+			minLength: 1
+			}, {
+			name: 'states',
+			displayKey: 'value',
+			source: substringMatcher(ace.vars['US_STATES']),
+			limit: 10
+			});
+			///////////////
+			//in ajax mode, remove remaining elements before leaving page
+			$(document).one('ajaxloadstart.page', function(e) {
+			$('[class*=select2]').remove();
+			$('select[name="duallistbox_demo1[]"]').bootstrapDualListbox('destroy');
+			$('.rating').raty('destroy');
+			$('.multiselect').multiselect('destroy');
+			});
+			});
+		// Yandex.Metrika counter
+		script(type='text/javascript').
+			(function (d, w, c) {
+			(w[c] = w[c] || []).push(function() {
+			try {
+			w.yaCounter25836836 = new Ya.Metrika({id:25836836,
+			webvisor:true,
+			clickmap:true,
+			trackLinks:true,
+			accurateTrackBounce:true});
+			} catch(e) { }
+			});
+			var n = d.getElementsByTagName("script")[0],
+			s = d.createElement("script"),
+			f = function () { n.parentNode.insertBefore(s, n); };
+			s.type = "text/javascript";
+			s.async = true;
+			s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+			if (w.opera == "[object Opera]") {
+			d.addEventListener("DOMContentLoaded", f, false);
+			} else { f(); }
+			})(document, window, "yandex_metrika_callbacks");
+		noscript
+			div
+				img(src='/mc.yandex.ru/watch/25836836', style='position:absolute; left:-9999px;', alt='')
+		// /Yandex.Metrika counter
+		script.
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-38894584-2', 'auto');
+			ga('send', 'pageview');

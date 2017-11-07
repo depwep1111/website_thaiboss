@@ -1,0 +1,534 @@
+doctype html
+html(lang='en')
+	head
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		meta(charset='utf-8')
+		title addProduct
+		meta(name='description', content='')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+		// bootstrap & fontawesome
+		link(rel='stylesheet', href='/assets1/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/assets1/font-awesome/4.5.0/css/font-awesome.min.css')
+		// page specific plugin styles
+		link(rel='stylesheet', href='/assets1/css/jquery-ui.custom.min.css')
+		// text fonts
+		link(rel='stylesheet', href='/assets1/css/fonts.googleapis.com.css')
+		// ace styles
+		link#main-ace-style.ace-main-stylesheet(rel='stylesheet', href='/assets1/css/ace.min.css')
+		//if lte IE 9
+			link.ace-main-stylesheet(rel='stylesheet', href='/assets1/css/ace-part2.min.css')
+		link(rel='stylesheet', href='/assets1/css/ace-skins.min.css')
+		link(rel='stylesheet', href='/assets1/css/ace-rtl.min.css')
+		//if lte IE 9
+			link(rel='stylesheet', href='/assets1/css/ace-ie.min.css')
+		// inline styles related to this page
+		// ace settings handler
+		script(src='/assets1/js/ace-extra.min.js')
+		// HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries
+		//if lte IE 8
+			script(src='/assets1/js/html5shiv.min.js')
+			script(src='/assets1/js/respond.min.js')
+	body.no-skin
+		#navbar.navbar.navbar-default.ace-save-state
+			#navbar-container.navbar-container.ace-save-state
+				button#menu-toggler.navbar-toggle.menu-toggler.pull-left(type='button', data-target='#sidebar')
+					span.sr-only Toggle sidebar
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				.navbar-header.pull-left
+					a.navbar-brand(href='index.html')
+						small
+							i.fa.fa-leaf
+							| 							Ace Admin
+				.navbar-buttons.navbar-header.pull-right(role='navigation')
+					ul.nav.ace-nav
+						li.light-blue.dropdown-modal
+							a.dropdown-toggle(data-toggle='dropdown', href='#')
+								span.user-info
+								|	#{admin.email}
+								i.ace-icon.fa.fa-caret-down
+							ul.user-menu.dropdown-menu-right.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-close
+								li
+									a(href='/admin/logout')
+										i.ace-icon.fa.fa-power-off
+										|  Logout
+			// /.navbar-container
+		#main-container.main-container.ace-save-state
+			script(type='text/javascript').
+				try {
+				ace.settings.loadState('main-container')
+				} catch (e) {}
+			#sidebar.sidebar.responsive.ace-save-state
+				script(type='text/javascript').
+					try {
+					ace.settings.loadState('sidebar')
+					} catch (e) {}
+				#sidebar-shortcuts.sidebar-shortcuts
+					#sidebar-shortcuts-large.sidebar-shortcuts-large
+						button.btn.btn-success
+							i.ace-icon.fa.fa-signal
+						button.btn.btn-info
+							i.ace-icon.fa.fa-pencil
+						button.btn.btn-warning
+							i.ace-icon.fa.fa-users
+						button.btn.btn-danger
+							i.ace-icon.fa.fa-cogs
+					#sidebar-shortcuts-mini.sidebar-shortcuts-mini
+						span.btn.btn-success
+						span.btn.btn-info
+						span.btn.btn-warning
+						span.btn.btn-danger
+				// /.sidebar-shortcuts
+				ul.nav.nav-list
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-list
+							span.menu-text Sản phẩm
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/categoryproduct')
+									i.menu-icon.fa.fa-caret-right
+									|  Danh mục sản phẩm
+								b.arrow
+							li
+								a(href='/admin/product')
+									i.menu-icon.fa.fa-caret-right
+									|  Sản phẩm
+								b.arrow
+							li.active
+								a(href='/admin/addproduct')
+									i.menu-icon.fa.fa-caret-right
+									|  Thêm sản phẩm
+								b.arrow
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-pencil-square-o
+							span.menu-text Quản lý bệnh  
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/benhly')
+									i.menu-icon.fa.fa-caret-right
+									|  Bệnh lý
+								b.arrow
+							li
+								a(href='/admin/categorytc')
+									i.menu-icon.fa.fa-caret-right
+									| Danh mục triệu chứng
+								b.arrow
+							li
+								a(href='/admin/trieuchung')
+									i.menu-icon.fa.fa-caret-right
+									|  Triệu chứng
+								b.arrow
+							li
+								a(href='/admin/cart/1')
+									i.menu-icon.fa.fa-caret-right
+									|  Quản lý hóa đơn
+								b.arrow
+							li
+								a(href='/admin/managefeedback/1')
+									i.menu-icon.fa.fa-caret-right
+									|  Quản lý phản hồi
+								b.arrow
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-users
+							span.menu-text Quản lý người dùng 
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/manageuser')
+									i.menu-icon.fa.fa-caret-right
+									|  Người dùng
+								b.arrow
+							li
+								a(href='/admin/manageadmin')
+									i.menu-icon.fa.fa-caret-right
+									|  admin
+								b.arrow
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-truck
+							span.menu-text  Quản lý dịch vụ
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/khuvuc')
+									i.menu-icon.fa.fa-caret-right
+									| Khu vực
+								b.arrow
+							li
+								a(href='/admin/nhavc')
+									i.menu-icon.fa.fa-caret-right
+									| Nhà vận chuyển
+								b.arrow
+							li
+								a(href='/admin/dichvu/1')
+									i.menu-icon.fa.fa-caret-right
+									| Dịch vụ
+								b.arrow
+				// /.nav-list
+				#sidebar-collapse.sidebar-toggle.sidebar-collapse
+					i#sidebar-toggle-icon.ace-icon.fa.fa-angle-double-left.ace-save-state(data-icon1='ace-icon fa fa-angle-double-left', data-icon2='ace-icon fa fa-angle-double-right')
+			.main-content
+				.main-content-inner
+					#breadcrumbs.breadcrumbs.ace-save-state
+						ul.breadcrumb
+							li
+								i.ace-icon.fa.fa-home.home-icon
+								a(href='#') Trang chủ
+							li
+								a(href='#') Sản phẩm
+							li.active Thêm sản phẩm
+						// /.breadcrumb
+						#nav-search.nav-search
+							form.form-search
+								span.input-icon
+									input#nav-search-input.nav-search-input(type='text', placeholder='Search ...', autocomplete='off')
+									i.ace-icon.fa.fa-search.nav-search-icon
+						// /.nav-search
+					.page-content
+						#ace-settings-container.ace-settings-container
+							#ace-settings-btn.btn.btn-app.btn-xs.btn-warning.ace-settings-btn
+								i.ace-icon.fa.fa-cog.bigger-130
+							#ace-settings-box.ace-settings-box.clearfix
+								.pull-left.width-50
+									.ace-settings-item
+										.pull-left
+											select#skin-colorpicker.hide
+												option(data-skin='no-skin', value='#438EB9') #438EB9
+												option(data-skin='skin-1', value='#222A2D') #222A2D
+												option(data-skin='skin-2', value='#C6487E') #C6487E
+												option(data-skin='skin-3', value='#D0D0D0') #D0D0D0
+										span   Choose Skin
+									.ace-settings-item
+										input#ace-settings-navbar.ace.ace-checkbox-2.ace-save-state(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-navbar')  Fixed Navbar
+									.ace-settings-item
+										input#ace-settings-sidebar.ace.ace-checkbox-2.ace-save-state(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-sidebar')  Fixed Sidebar
+									.ace-settings-item
+										input#ace-settings-breadcrumbs.ace.ace-checkbox-2.ace-save-state(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-breadcrumbs')  Fixed Breadcrumbs
+									.ace-settings-item
+										input#ace-settings-rtl.ace.ace-checkbox-2(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-rtl')  Right To Left (rtl)
+									.ace-settings-item
+										input#ace-settings-add-container.ace.ace-checkbox-2.ace-save-state(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-add-container')
+											| Inside
+											b .container
+								// /.pull-left
+								.pull-left.width-50
+									.ace-settings-item
+										input#ace-settings-hover.ace.ace-checkbox-2(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-hover')  Submenu on Hover
+									.ace-settings-item
+										input#ace-settings-compact.ace.ace-checkbox-2(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-compact')  Compact Sidebar
+									.ace-settings-item
+										input#ace-settings-highlight.ace.ace-checkbox-2(type='checkbox', autocomplete='off')
+										label.lbl(for='ace-settings-highlight')  Alt. Active Item
+								// /.pull-left
+							// /.ace-settings-box
+						// /.ace-settings-container
+						.page-header
+							h1
+								b Thêm sản phẩm mới
+						.row
+							.col-md-9
+								// /.page-header
+								section.container.main-section
+									#main.mainbody
+										.col-md-9
+											.post
+												form(action="/admin/product/add" method="post" enctype="multipart/form-data")
+													input(name="name" type='text', placeholder='Tên sản phẩm ', style='width: 825px; height: 40px;\
+													font-size: 20px;color: #72777c')
+													br
+													br
+													.row
+														.col-md-5
+															h2 Chọn danh mục sản phẩm 
+															select#Category.form-control(data-val='true', data-val-required='The Chọn chuyên mục field is required.', name='categoryID')
+																each category, i in categories
+																	option(value='#{category._id}') #{category.ten}
+													br
+													.form-group
+														input(name='mainimage', type='file')
+													br
+													br
+													.form-group
+													h2 Giới thiệu chi tiết
+														textarea#editor1(name='gioithieu', rows='10', cols='115')
+														script(src='/ckeditor/ckeditor.js')
+														script.
+															CKEDITOR.replace('editor1');
+													br
+													.form-group
+														h2 Lời mở đầu
+														textarea(name='description', rows='3', cols='115')
+													br
+													br
+													.form-horizontal
+														.form-group
+															label.control-label.col-sm-2 Giá sản phẩm:
+															.col-sm-3
+																input.form-control(type='number' name='price')
+														.form-group
+															label.control-label.col-sm-2 Số lượng:
+															.col-sm-3
+																input.form-control(type='number' name='soluong')
+														.form-group
+															label.control-label.col-sm-2 Đơn vị tính:
+															.col-sm-3
+																input.form-control(type='text' name='donvi')
+														.form-group
+															label.control-label.col-sm-2 Tỉ lệ:
+															.col-sm-3
+																input.form-control(type='number' name='tile')
+													button.btn.btn-primary(type='submit' style="float: right;") Thêm sản phẩm	
+							.col-md-3
+								button.btn.btn-primary(type='button') Đăng bài viết
+								#postimagediv.postbox
+									h2.hndle.ui-sortable-handle
+										span Ảnh sản phẩm
+									.inside
+										p.hide-if-no-js
+											a.thickbox(href='#') Thiết lập ảnh sản phẩm
+							// /.page-content
+					// /.main-content
+					.footer
+						.footer-inner
+							.footer-content
+								span.bigger-120
+									span.blue.bolder Ace
+									|  Application © 2013-2014
+								span.action-buttons
+									a(href='#')
+										i.ace-icon.fa.fa-twitter-square.light-blue.bigger-150
+									a(href='#')
+										i.ace-icon.fa.fa-facebook-square.text-primary.bigger-150
+									a(href='#')
+										i.ace-icon.fa.fa-rss-square.orange.bigger-150
+					a#btn-scroll-up.btn-scroll-up.btn.btn-sm.btn-inverse(href='#')
+						i.ace-icon.fa.fa-angle-double-up.icon-only.bigger-110
+				// /.main-container
+				// basic scripts
+				//if !IE
+				script(src='/assets1/js/jquery-2.1.4.min.js')
+				// <![endif]
+				//if IE
+					script(src='/assets1/js/jquery-1.11.3.min.js')
+				script(type='text/javascript').
+					if ('ontouchstart' in document.documentElement) document.write("<script src='/assets1/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+				script(src='/assets1/js/bootstrap.min.js')
+				// page specific plugin scripts
+				script(src='/assets1/js/jquery-ui.custom.min.js')
+				script(src='/assets1/js/jquery.ui.touch-punch.min.js')
+				script(src='/assets1/js/markdown.min.js')
+				script(src='/assets1/js/bootstrap-markdown.min.js')
+				script(src='/assets1/js/jquery.hotkeys.index.min.js')
+				script(src='/assets1/js/bootstrap-wysiwyg.min.js')
+				script(src='/assets1/js/bootbox.js')
+				// ace scripts
+				script(src='/assets1/js/ace-elements.min.js')
+				script(src='/assets1/js/ace.min.js')
+				// inline scripts related to this page
+				script(type='text/javascript').
+					jQuery(function($) {
+					$('textarea[data-provide="markdown"]').each(function() {
+					var $this = $(this);
+					if ($this.data('markdown')) {
+					$this.data('markdown').showEditor();
+					} else $this.markdown()
+					$this.parent().find('.btn').addClass('btn-white');
+					})
+					function showErrorAlert(reason, detail) {
+					var msg = '';
+					if (reason === 'unsupported-file-type') {
+					msg = "Unsupported format " + detail;
+					} else {
+					//console.log("error uploading file", reason, detail);
+					}
+					$('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>' +
+					'<strong>File upload error</strong> ' + msg + ' </div>').prependTo('#alerts');
+					}
+					//$('#editor1').ace_wysiwyg();//this will create the default editor will all buttons
+					//but we want to change a few buttons colors for the third style
+					$('#editor1').ace_wysiwyg({
+					toolbar: [
+					'font',
+					null,
+					'fontSize',
+					null, {
+					name: 'bold',
+					className: 'btn-info'
+					}, {
+					name: 'italic',
+					className: 'btn-info'
+					}, {
+					name: 'strikethrough',
+					className: 'btn-info'
+					}, {
+					name: 'underline',
+					className: 'btn-info'
+					},
+					null, {
+					name: 'insertunorderedlist',
+					className: 'btn-success'
+					}, {
+					name: 'insertorderedlist',
+					className: 'btn-success'
+					}, {
+					name: 'outdent',
+					className: 'btn-purple'
+					}, {
+					name: 'indent',
+					className: 'btn-purple'
+					},
+					null, {
+					name: 'justifyleft',
+					className: 'btn-primary'
+					}, {
+					name: 'justifycenter',
+					className: 'btn-primary'
+					}, {
+					name: 'justifyright',
+					className: 'btn-primary'
+					}, {
+					name: 'justifyfull',
+					className: 'btn-inverse'
+					},
+					null, {
+					name: 'createLink',
+					className: 'btn-pink'
+					}, {
+					name: 'unlink',
+					className: 'btn-pink'
+					},
+					null, {
+					name: 'insertImage',
+					className: 'btn-success'
+					},
+					null,
+					'foreColor',
+					null, {
+					name: 'undo',
+					className: 'btn-grey'
+					}, {
+					name: 'redo',
+					className: 'btn-grey'
+					}
+					],
+					'wysiwyg': {
+					fileUploadError: showErrorAlert
+					}
+					}).prev().addClass('wysiwyg-style2');
+					/**
+					//make the editor have all the available height
+					$(window).on('resize.editor', function() {
+					var offset = $('#editor1').parent().offset();
+					var winHeight =  $(this).height();
+					$('#editor1').css({'height':winHeight - offset.top - 10, 'max-height': 'none'});
+					}).triggerHandler('resize.editor');
+					*/
+					$('#editor2').css({
+					'height': '200px'
+					}).ace_wysiwyg({
+					toolbar_place: function(toolbar) {
+					return $(this).closest('.widget-box')
+					.find('.widget-header').prepend(toolbar)
+					.find('.wysiwyg-toolbar').addClass('inline');
+					},
+					toolbar: [
+					'bold', {
+					name: 'italic',
+					title: 'Change Title!',
+					icon: 'ace-icon fa fa-leaf'
+					},
+					'strikethrough',
+					null,
+					'insertunorderedlist',
+					'insertorderedlist',
+					null,
+					'justifyleft',
+					'justifycenter',
+					'justifyright'
+					],
+					speech_button: false
+					});
+					$('[data-toggle="buttons"] .btn').on('click', function(e) {
+					var target = $(this).find('input[type=radio]');
+					var which = parseInt(target.val());
+					var toolbar = $('#editor1').prev().get(0);
+					if (which >= 1 && which <= 4) {
+					toolbar.className = toolbar.className.replace(/wysiwyg\\-style(1|2)/g, '');
+					if (which == 1) $(toolbar).addClass('wysiwyg-style1');
+					else if (which == 2) $(toolbar).addClass('wysiwyg-style2');
+					if (which == 4) {
+					$(toolbar).find('.btn-group > .btn').addClass('btn-white btn-round');
+					} else $(toolbar).find('.btn-group > .btn-white').removeClass('btn-white btn-round');
+					}
+					});
+					//RESIZE IMAGE
+					//Add Image Resize Functionality to Chrome and Safari
+					//webkit browsers don't have image resize functionality when content is editable
+					//so let's add something using jQuery UI resizable
+					//another option would be opening a dialog for user to enter dimensions.
+					if (typeof jQuery.ui !== 'undefined' && ace.vars['webkit']) {
+					var lastResizableImg = null;
+					function destroyResizable() {
+					if (lastResizableImg == null) return;
+					lastResizableImg.resizable("destroy");
+					lastResizableImg.removeData('resizable');
+					lastResizableImg = null;
+					}
+					var enableImageResize = function() {
+					$('.wysiwyg-editor')
+					.on('mousedown', function(e) {
+					var target = $(e.target);
+					if (e.target instanceof HTMLImageElement) {
+					if (!target.data('resizable')) {
+					target.resizable({
+					aspectRatio: e.target.width / e.target.height,
+					});
+					target.data('resizable', true);
+					if (lastResizableImg != null) {
+					//disable previous resizable image
+					lastResizableImg.resizable("destroy");
+					lastResizableImg.removeData('resizable');
+					}
+					lastResizableImg = target;
+					}
+					}
+					})
+					.on('click', function(e) {
+					if (lastResizableImg != null && !(e.target instanceof HTMLImageElement)) {
+					destroyResizable();
+					}
+					})
+					.on('keydown', function() {
+					destroyResizable();
+					});
+					}
+					enableImageResize();
+					/**
+					//or we can load the jQuery UI dynamically only if needed
+					if (typeof jQuery.ui !== 'undefined') enableImageResize();
+					else {//load jQuery UI if not loaded
+					//in Ace demo ./components will be replaced by correct components path
+					$.getScript("assets/js/jquery-ui.custom.min.js", function(data, textStatus, jqxhr) {
+					enableImageResize()
+					});
+					}
+					*/
+					}
+					});

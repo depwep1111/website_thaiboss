@@ -1,0 +1,33 @@
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a ui-sref="home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang chủ</a></li>
+            <li class="active">Thanh toán</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<!-- register -->
+<div class="register">
+    <div class="container">
+        <h2>Vui lòng cung cấp thông tin giao dịch</h2>
+        <div class="login-form-grids">
+            <form ng-submit="thanhtoan()" method="POST">
+                <label for="fname">Số tài khoản công ty</label>
+                <input type="text" value="0993761236677182" disabled="true" name="fname">
+                <input type="text" placeholder="Họ và tên..." required=" " name="name" ng-model="formData.name">
+                <input type="email" placeholder="Email..." required=" " style="" name="email" ng-model="formData.email">
+                <input type="text" placeholder="Số điện thại..." required=" " style="" name="sdt" ng-model="formData.sdt">
+                <input type="text" placeholder="Địa chỉ giao hàng..." required=" " name="address" ng-model="formData.address">
+                <input type="text" placeholder="Số tài khoản giao dịch..." required=" " name="stk" ng-model="formData.stk">
+                
+                <br>
+                <p><span style="color: red;">*</span> Yêu cầu chuyển khoản vào tài khoản công ty đã cung cấp bên trên. Sau khi chuyển khoản đầy đủ chúng tôi sẽ giao hàng theo địa chỉ bạn đã cung cấp.</p>
+                <input type="submit" value="Đăng ký thanh toán">
+            </form>
+        </div>
+        <div class="register-home">
+            <a ui-sref="home">Trang chủ</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,488 @@
+doctype html
+html(lang='en')
+	head
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		meta(charset='utf-8')
+		title DanhmucTrieuChung
+		meta(name='description', content='Static & Dynamic Tables')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+		// bootstrap & fontawesome
+		link(rel='stylesheet', href='/assets1/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/assets1/font-awesome/4.5.0/css/font-awesome.min.css')
+		// page specific plugin styles
+		// text fonts
+		link(rel='stylesheet', href='/assets1/css/fonts.googleapis.com.css')
+		// ace styles
+		link#main-ace-style.ace-main-stylesheet(rel='stylesheet', href='/assets1/css/ace.min.css')
+		//if lte IE 9
+			link.ace-main-stylesheet(rel='stylesheet', href='/assets1/css/ace-part2.min.css')
+		link(rel='stylesheet', href='/assets1/css/ace-skins.min.css')
+		link(rel='stylesheet', href='/assets1/css/ace-rtl.min.css')
+		//if lte IE 9
+			link(rel='stylesheet', href='/assets1/css/ace-ie.min.css')
+		// inline styles related to this page
+		// ace settings handler
+		script(src='/assets1/js/ace-extra.min.js')
+		// HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries
+		//if lte IE 8
+			script(src='/assets1/js/html5shiv.min.js')
+			script(src='/assets1/js/respond.min.js')
+	body.no-skin
+		#navbar.navbar.navbar-default.ace-save-state
+			#navbar-container.navbar-container.ace-save-state
+				button#menu-toggler.navbar-toggle.menu-toggler.pull-left(type='button', data-target='#sidebar')
+					span.sr-only Toggle sidebar
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				.navbar-header.pull-left
+					a.navbar-brand(href='index.html')
+						small
+							i.fa.fa-leaf
+							| 							Ace Admin
+				.navbar-buttons.navbar-header.pull-right(role='navigation')
+					ul.nav.ace-nav
+						li.light-blue.dropdown-modal
+							a.dropdown-toggle(data-toggle='dropdown', href='#')
+								span.user-info
+								|	#{admin.email}
+								i.ace-icon.fa.fa-caret-down
+							ul.user-menu.dropdown-menu-right.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-close
+								li
+									a(href='/admin/logout')
+										i.ace-icon.fa.fa-power-off
+										|  Logout
+			// /.navbar-container
+		#main-container.main-container.ace-save-state
+			script(type='text/javascript').
+				try {
+				ace.settings.loadState('main-container')
+				} catch (e) {}
+			#sidebar.sidebar.responsive.ace-save-state
+				script(type='text/javascript').
+					try {
+					ace.settings.loadState('sidebar')
+					} catch (e) {}
+				#sidebar-shortcuts.sidebar-shortcuts
+					#sidebar-shortcuts-large.sidebar-shortcuts-large
+						button.btn.btn-success
+							i.ace-icon.fa.fa-signal
+						button.btn.btn-info
+							i.ace-icon.fa.fa-pencil
+						button.btn.btn-warning
+							i.ace-icon.fa.fa-users
+						button.btn.btn-danger
+							i.ace-icon.fa.fa-cogs
+					#sidebar-shortcuts-mini.sidebar-shortcuts-mini
+						span.btn.btn-success
+						span.btn.btn-info
+						span.btn.btn-warning
+						span.btn.btn-danger
+				// /.sidebar-shortcuts
+				ul.nav.nav-list
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-list
+							span.menu-text Sản phẩm
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/categoryproduct')
+									i.menu-icon.fa.fa-caret-right
+									|  Danh mục sản phẩm
+								b.arrow
+							li
+								a(href='/admin/product')
+									i.menu-icon.fa.fa-caret-right
+									|  Sản phẩm
+								b.arrow
+							li
+								a(href='/admin/addproduct')
+									i.menu-icon.fa.fa-caret-right
+									|  Thêm sản phẩm
+								b.arrow
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-pencil-square-o
+							span.menu-text Quản lý bệnh  
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/benhly')
+									i.menu-icon.fa.fa-caret-right
+									|  Bệnh lý
+								b.arrow
+							li.active
+								a(href='/admin/categorytc')
+									i.menu-icon.fa.fa-caret-right
+									| Danh mục triệu chứng
+								b.arrow
+							li
+								a(href='/admin/trieuchung')
+									i.menu-icon.fa.fa-caret-right
+									|  Triệu chứng
+								b.arrow
+							li
+								a(href='/admin/cart/1')
+									i.menu-icon.fa.fa-caret-right
+									|  Quản lý hóa đơn
+								b.arrow
+							li
+								a(href='/admin/managefeedback/1')
+									i.menu-icon.fa.fa-caret-right
+									|  Quản lý phản hồi
+								b.arrow
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-users
+							span.menu-text Quản lý người dùng 
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/manageuser')
+									i.menu-icon.fa.fa-caret-right
+									|  Người dùng
+								b.arrow
+							li
+								a(href='/admin/manageadmin')
+									i.menu-icon.fa.fa-caret-right
+									|  admin
+								b.arrow
+					li
+						a.dropdown-toggle(href='#')
+							i.menu-icon.fa.fa-truck
+							span.menu-text  Quản lý dịch vụ
+							b.arrow.fa.fa-angle-down
+						b.arrow
+						ul.submenu
+							li
+								a(href='/admin/khuvuc')
+									i.menu-icon.fa.fa-caret-right
+									| Khu vực
+								b.arrow
+							li
+								a(href='/admin/nhavc')
+									i.menu-icon.fa.fa-caret-right
+									| Nhà vận chuyển
+								b.arrow
+							li
+								a(href='/admin/dichvu/1')
+									i.menu-icon.fa.fa-caret-right
+									| Dịch vụ
+								b.arrow
+				// /.nav-list
+				#sidebar-collapse.sidebar-toggle.sidebar-collapse
+					i#sidebar-toggle-icon.ace-icon.fa.fa-angle-double-left.ace-save-state(data-icon1='ace-icon fa fa-angle-double-left', data-icon2='ace-icon fa fa-angle-double-right')
+			.main-content
+				.main-content-inner
+					#breadcrumbs.breadcrumbs.ace-save-state
+						ul.breadcrumb
+							li
+								i.ace-icon.fa.fa-home.home-icon
+								a(href='#') Trang chủ
+							li
+								a(href='#') Sản phẩm
+							li.active Danh mục
+						// /.breadcrumb
+						#nav-search.nav-search
+							form.form-search
+								span.input-icon
+									input#nav-search-input.nav-search-input(type='text', placeholder='Search ...', autocomplete='off')
+									i.ace-icon.fa.fa-search.nav-search-icon
+						// /.nav-search
+					.page-content
+						// /.ace-settings-container
+						.page-header
+							.row
+								.col-md-4
+									h1
+										b  Danh mục triệu chứng 
+						// /.page-header
+						.row
+							.col-xs-12
+								// PAGE CONTENT BEGINS
+								.row
+									.col-xs-12
+										table#simple-table.table.table-bordered.table-hover
+											thead
+												tr
+													th.detail-col STT
+													th Tên danh mục triệu chứng
+													th
+											tbody
+												each dmtrieuchung, i in dmtrieuchungs
+													tr
+														td.center #{i+1}
+														td
+															input(type="text" name="name" value="#{dmtrieuchung.ten}" disabled id="cat"+dmtrieuchung._id)
+														td
+															.hidden-sm.hidden-xs.btn-group
+																button.btn.btn-xs.btn-info(id='update'+dmtrieuchung._id onclick="edit"+dmtrieuchung._id+"()")
+																	i.ace-icon.fa.fa-pencil.bigger-120
+																button.btn.btn-xs.btn-danger(onclick="location.href='/admin/removecategorytc/#{dmtrieuchung._id}'")
+																	i.ace-icon.fa.fa-trash-o.bigger-120
+																button.btn.btn-xs.btn-info(style="visibility: hidden;" id='save'+dmtrieuchung._id onclick="save"+dmtrieuchung._id+"()")
+																	i.ace-icon.fa.fa-save.bigger-120
+																button.btn.btn-xs.btn-danger(style="visibility: hidden;" id='cancel'+dmtrieuchung._id onclick="cancel"+dmtrieuchung._id+"()")
+																	i.ace-icon.fa.fa-close.bigger-120
+																input(type="hidden" id='id'+dmtrieuchung._id value="#{dmtrieuchung._id}")
+																script.
+																	function edit#{dmtrieuchung._id}(){
+																		$("#cat#{dmtrieuchung._id}").prop('disabled', false);
+																		document.getElementById('save#{dmtrieuchung._id}').style.visibility="visible";
+																		document.getElementById('cancel#{dmtrieuchung._id}').style.visibility="visible";
+																	}
+																script.
+																	function cancel#{dmtrieuchung._id}(){
+																		$("#cat#{dmtrieuchung._id}").prop('disabled', true);
+																		
+																		document.getElementById('save#{dmtrieuchung._id}').style.visibility="hidden";
+																		document.getElementById('cancel#{dmtrieuchung._id}').style.visibility="hidden";
+																	}
+																script.
+																	function save#{dmtrieuchung._id}(){
+																		var data ={}
+																		var obj = {}
+																		data.id = $('input#id#{dmtrieuchung._id}').attr('value');
+																		data.name = $('#cat#{dmtrieuchung._id}').val();
+																		$.ajax({
+																			type: 'POST',
+																			data: JSON.stringify(data),
+																			contentType: 'application/json',
+																			url: '/admin/categorytc/update',
+																			success:	function(obj){
+																					$("#cat#{dmtrieuchung._id}").prop('disabled', true);
+																					$("#cat#{dmtrieuchung._id}").val(obj.name);
+																					document.getElementById('save#{dmtrieuchung._id}').style.visibility="hidden";
+																					document.getElementById('cancel#{dmtrieuchung._id}').style.visibility="hidden";
+																				}
+																		});
+																	}
+															.hidden-md.hidden-lg
+																.inline.pos-rel
+																	button.btn.btn-minier.btn-primary.dropdown-toggle(data-toggle='dropdown', data-position='auto')
+																		i.ace-icon.fa.fa-cog.icon-only.bigger-110
+																	ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-menu-right.dropdown-caret.dropdown-close
+																		li
+																			a.tooltip-info(href='#', data-rel='tooltip', title='View')
+																				span.blue
+																					i.ace-icon.fa.fa-eye.bigger-120
+																		li
+																			a.tooltip-success(href='#', data-rel='tooltip', title='Edit')
+																				span.green
+																					i.ace-icon.fa.fa-pencil-square-o.bigger-120
+																		li
+																			a.tooltip-error(href='#', data-rel='tooltip', title='Delete')
+																				span.red
+																					i.ace-icon.fa.fa-trash-o.bigger-120
+											
+										.col-md-7
+											h1 Thêm danh mục triệu chứng mới
+											form(action='/admin/categorytc/add' method='post')
+												.form-group
+													label(for='email') Tên danh mục:
+													input.form-control(type='text' name='ten')
+												button.btn.btn-primary(style='float: right;', type='submit') Thêm danh mục
+									// /.span
+								// /.row
+								// PAGE CONTENT ENDS
+							// /.col
+						// /.row
+					// /.page-content
+			// /.main-content
+			.footer
+				.footer-inner
+					.footer-content
+						span.bigger-120
+							span.blue.bolder Ace
+							|  Application © 2013-2014
+						span.action-buttons
+							a(href='#')
+								i.ace-icon.fa.fa-twitter-square.light-blue.bigger-150
+							a(href='#')
+								i.ace-icon.fa.fa-facebook-square.text-primary.bigger-150
+							a(href='#')
+								i.ace-icon.fa.fa-rss-square.orange.bigger-150
+			a#btn-scroll-up.btn-scroll-up.btn.btn-sm.btn-inverse(href='#')
+				i.ace-icon.fa.fa-angle-double-up.icon-only.bigger-110
+		// /.main-container
+		// basic scripts
+		//if !IE
+		script(src='/assets1/js/jquery-2.1.4.min.js')
+		// <![endif]
+		//if IE
+			script(src='/assets1/js/jquery-1.11.3.min.js')
+		script(type='text/javascript').
+			if ('ontouchstart' in document.documentElement) document.write("<script src='/assets1/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+		script(src='/assets1/js/bootstrap.min.js')
+		// page specific plugin scripts
+		script(src='/assets1/js/jquery.dataTables.min.js')
+		script(src='/assets1/js/jquery.dataTables.bootstrap.min.js')
+		script(src='/assets1/js/dataTables.buttons.min.js')
+		script(src='/assets1/js/buttons.flash.min.js')
+		script(src='/assets1/js/buttons.html5.min.js')
+		script(src='/assets1/js/buttons.print.min.js')
+		script(src='/assets1/js/buttons.colVis.min.js')
+		script(src='/assets1/js/dataTables.select.min.js')
+		// ace scripts
+		script(src='/assets1/js/ace-elements.min.js')
+		script(src='/assets1/js/ace.min.js')
+		// inline scripts related to this page
+		script(type='text/javascript').
+			jQuery(function($) {
+			//initiate dataTables plugin
+			var myTable =
+			$('#dynamic-table')
+			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+			.DataTable({
+			bAutoWidth: false,
+			"aoColumns": [{
+			"bSortable": false
+			},
+			null, null, null, null, null, {
+			"bSortable": false
+			}
+			],
+			"aaSorting": [],
+			select: {
+			style: 'multi'
+			}
+			});
+			$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+			new $.fn.dataTable.Buttons(myTable, {
+			buttons: [{
+			"extend": "colvis",
+			"text": "<i class='fa fa-search bigger-110 blue'></i> <span class='hidden'>Show/hide columns</span>",
+			"className": "btn btn-white btn-primary btn-bold",
+			columns: ':not(:first):not(:last)'
+			}, {
+			"extend": "copy",
+			"text": "<i class='fa fa-copy bigger-110 pink'></i> <span class='hidden'>Copy to clipboard</span>",
+			"className": "btn btn-white btn-primary btn-bold"
+			}, {
+			"extend": "csv",
+			"text": "<i class='fa fa-database bigger-110 orange'></i> <span class='hidden'>Export to CSV</span>",
+			"className": "btn btn-white btn-primary btn-bold"
+			}, {
+			"extend": "excel",
+			"text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+			"className": "btn btn-white btn-primary btn-bold"
+			}, {
+			"extend": "pdf",
+			"text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+			"className": "btn btn-white btn-primary btn-bold"
+			}, {
+			"extend": "print",
+			"text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+			"className": "btn btn-white btn-primary btn-bold",
+			autoPrint: false,
+			message: 'This print was produced using the Print button for DataTables'
+			}]
+			});
+			myTable.buttons().container().appendTo($('.tableTools-container'));
+			//style the message box
+			var defaultCopyAction = myTable.button(1).action();
+			myTable.button(1).action(function(e, dt, button, config) {
+			defaultCopyAction(e, dt, button, config);
+			$('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+			});
+			var defaultColvisAction = myTable.button(0).action();
+			myTable.button(0).action(function(e, dt, button, config) {
+			defaultColvisAction(e, dt, button, config);
+			if ($('.dt-button-collection > .dropdown-menu').length == 0) {
+			$('.dt-button-collection')
+			.wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+			.find('a').attr('href', '#').wrap("<li />")
+			}
+			$('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+			});
+			////
+			setTimeout(function() {
+			$($('.tableTools-container')).find('a.dt-button').each(function() {
+			var div = $(this).find(' > div').first();
+			if (div.length == 1) div.tooltip({
+			container: 'body',
+			title: div.parent().text()
+			});
+			else $(this).tooltip({
+			container: 'body',
+			title: $(this).text()
+			});
+			});
+			}, 500);
+			myTable.on('select', function(e, dt, type, index) {
+			if (type === 'row') {
+			$(myTable.row(index).node()).find('input:checkbox').prop('checked', true);
+			}
+			});
+			myTable.on('deselect', function(e, dt, type, index) {
+			if (type === 'row') {
+			$(myTable.row(index).node()).find('input:checkbox').prop('checked', false);
+			}
+			});
+			//table checkboxes
+			$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+			//select/deselect all rows according to table header checkbox
+			$('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function() {
+			var th_checked = this.checked; //checkbox inside "TH" table header
+			$('#dynamic-table').find('tbody > tr').each(function() {
+			var row = this;
+			if (th_checked) myTable.row(row).select();
+			else myTable.row(row).deselect();
+			});
+			});
+			//select/deselect a row when the checkbox is checked/unchecked
+			$('#dynamic-table').on('click', 'td input[type=checkbox]', function() {
+			var row = $(this).closest('tr').get(0);
+			if (this.checked) myTable.row(row).deselect();
+			else myTable.row(row).select();
+			});
+			$(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
+			e.stopImmediatePropagation();
+			e.stopPropagation();
+			e.preventDefault();
+			});
+			//And for the first simple table, which doesn't have TableTools or dataTables
+			//select/deselect all rows according to table header checkbox
+			var active_class = 'active';
+			$('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function() {
+			var th_checked = this.checked; //checkbox inside "TH" table header
+			$(this).closest('table').find('tbody > tr').each(function() {
+			var row = this;
+			if (th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+			else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+			});
+			});
+			//select/deselect a row when the checkbox is checked/unchecked
+			$('#simple-table').on('click', 'td input[type=checkbox]', function() {
+			var $row = $(this).closest('tr');
+			if ($row.is('.detail-row ')) return;
+			if (this.checked) $row.addClass(active_class);
+			else $row.removeClass(active_class);
+			});
+			/********************************/
+			//add tooltip for small view action buttons in dropdown menu
+			$('[data-rel="tooltip"]').tooltip({
+			placement: tooltip_placement
+			});
+			//tooltip placement on right or left
+			function tooltip_placement(context, source) {
+			var $source = $(source);
+			var $parent = $source.closest('table')
+			var off1 = $parent.offset();
+			var w1 = $parent.width();
+			var off2 = $source.offset();
+			//var w2 = $source.width();
+			if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
+			return 'left';
+			}
+			/***************/
+			$('.show-details-btn').on('click', function(e) {
+			e.preventDefault();
+			$(this).closest('tr').next().toggleClass('open');
+			$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+			});
+			})

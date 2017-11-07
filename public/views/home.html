@@ -1,0 +1,199 @@
+<ul id="demo1">
+    <li>
+        <img src="images/11.jpg" alt="" />
+        <!--Slider Description example-->
+        <div class="slide-desc">
+            <h3>Delici vị ngon của gạo</h3>
+        </div>
+    </li>
+    <li>
+        <img src="images/22.jpg" alt="" />
+        <div class="slide-desc">
+            <h3>Whole Spices Products Are Now On Line With Us</h3>
+        </div>
+    </li>
+    <li>
+        <img src="images/44.jpg" alt="" />
+        <div class="slide-desc">
+            <h3>Whole Spices Products Are Now On Line With Us</h3>
+        </div>
+    </li>
+</ul>
+<div class="top-brands">
+    <div class="container">
+        <div id="myTabContent">
+            <div class="col-md-4 agile_top_brands_grids top_brand_left" ng-repeat="product in products | filter:searchText">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <div class="agile_top_brand_left_grid_pos">
+                            <!-- <img src="images/hethang.png" alt=" " class="img-responsive img-sold-out" /> -->
+                        </div>
+                        <div class="agile_top_brand_left_grid1">
+                            <figure>
+                                <div class="snipcart-item block">
+                                    <div class="snipcart-thumb">
+                                        <a href="/detail/{{product.id}}"><img class="img-responsive img-product" title=" " alt=" " src="{{product.image}}" /></a>
+                                        <p class="name_product">{{product.name}}</p>
+                                        <h4>{{product.price}}<span></span></h4>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details">
+                                        <input ng-click="submitAddToCart(product.id, product.name, product.price)" type="submit" value="Thêm vào giỏ" class="button" />
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <nav class="numbering">
+                <ul class="pagination paging">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                    </li>
+                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="row item active">
+            <a class="col-md-4" href="/detail/1"> <img src="images/BANH GAO VI GA1.jpg" alt="First slide"></a>
+            <a class="col-md-4" href="/detail/2"> <img src="images/BANH GAO VI PHO MAI1.jpg" alt="First slide"></a>
+            <a class="col-md-4" href="/detail/3"> <img src="images/BANH GAO VI RONG BIEN1.jpg" alt="First slide"></a> -->
+        </div>
+        <!-- <div class="item">
+                <a href="personalcare.html"> <img class="second-slide " src="images/b3.jpg" alt="Second slide"></a>
+            </div>
+            <div class="item">
+                <a href="household.html"><img class="third-slide " src="images/b1.jpg" alt="Third slide"></a>
+            </div> -->
+    </div>
+</div>
+<div class="newproducts-w3agile">
+    <div class="container">
+        <h3>SẢN PHẨM BÁN CHẠY</h3>
+        <div class="agile_top_brands_grids">
+            <div class="col-md-3 top_brand_left-1">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <div class="agile_top_brand_left_grid_pos">
+                        </div>
+                        <div class="agile_top_brand_left_grid1">
+                            <figure>
+                                <div class="snipcart-item block">
+                                    <div class="snipcart-thumb">
+                                        <a href="/detail/1"><img class="img-responsive img-product" title=" " alt=" " src="/images/BANH GAO VI GA.jpg"></a>
+                                        <p class="name_product">Bánh gạo vị gà</p>
+                                        <h4>20000<span></span></h4>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details">
+                                        <input ng-click="submitAddToCart('1', 'Bánh gạo vị gà', 20000)" type="submit" value="Thêm vào giỏ" class="button" />
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 top_brand_left-1">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <div class="agile_top_brand_left_grid_pos">
+                        </div>
+                        <div class="agile_top_brand_left_grid1">
+                            <figure>
+                                <div class="snipcart-item block">
+                                    <div class="snipcart-thumb">
+                                        <a href="/detail/2"><img title=" " alt=" " src="images/BANH GAO VI PHO MAI.jpg" class="img-responsive img-product"></a>
+                                        <p class="name_product">Bánh gạo vị phô mai</p>
+                                        <h4>20000<span></span></h4>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details">
+                                        <input ng-click="submitAddToCart('2', 'Bánh gạo vị phô mai', 20000)" type="submit" value="Thêm vào giỏ" class="button" />
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 top_brand_left-1">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <div class="agile_top_brand_left_grid_pos">
+                        </div>
+                        <div class="agile_top_brand_left_grid_pos">
+                        </div>
+                        <div class="agile_top_brand_left_grid1">
+                            <figure>
+                                <div class="snipcart-item block">
+                                    <div class="snipcart-thumb">
+                                        <a href="/detail/3"><img src="images/BANH GAO VI RONG BIEN.jpg" alt=" " class="img-responsive img-product" alt=" " class="img-responsive"></a>
+                                        <p class="name_product">Bánh gạo vị rong biển</p>
+                                        <h4>20,000<span></span></h4>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details">
+                                        <input ng-click="submitAddToCart('3', 'Bánh gạo vị rong biển', 20000)" type="submit" value="Thêm vào giỏ" class="button" />
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 top_brand_left-1">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <div class="agile_top_brand_left_grid_pos">
+                        </div>
+                        <div class="agile_top_brand_left_grid1">
+                            <figure>
+                                <div class="snipcart-item block">
+                                    <div class="snipcart-thumb">
+                                        <a href="/detail/11"><img title=" " src="images/promotion_Nov2016_1000x1000_02_301016-02.jpg" alt=" " class="img-responsive img-product"></a>
+                                        <p class="name_product">Nước Socola Sữa Chocojoy</p>
+                                        <h4>22000<span></span></h4>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details">
+                                        <input ng-click="submitAddToCart('11', 'Nước Socola Sữa Chocojoy', 22000)" type="submit" value="Thêm vào giỏ" class="button" />
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    jQuery('#demo1').skdslider({ 'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading' });
+
+    jQuery('#responsive').change(function() {
+        $('#responsive_wrapper').width(jQuery(this).val());
+    });
+
+});
+</script>

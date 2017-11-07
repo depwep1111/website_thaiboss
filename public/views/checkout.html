@@ -1,0 +1,68 @@
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1">
+            <li><a ui-sref="home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang chủ</a></li>
+            <li class="active">Giỏ hàng</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<!-- checkout -->
+<div class="checkout">
+    <div class="container">
+        <h2 ng-show="buy.length == 0">Không có sản phẩm nào</h2>
+        <div class="checkout-right" ng-show="buy.length != 0">
+            <table class="timetable_sub">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Tên</th>
+                        <th>Giá</th>
+                        <th>Xóa</th>
+                    </tr>
+                </thead>
+                <tr class="rem1" ng-repeat="product in buy">
+                	
+                    <td class="invert">{{$index+1}}</td>
+                    <td class="img-product"><a ng-repeat="item in items" ng-if="item.id == product.id" href="/detail/{{item.id}}"><img src="{{item.image}}" alt=" " class="img-responsive" /></a></td>
+                    <td class="invert">
+                        <div class="quantity">
+                            <div class="quantity-select">
+                                <div ng-click="minus(product.id)" class="entry value-minus">&nbsp;</div>
+                                <div class="entry value"><span>{{product.quanity}}</span></div>
+                                <div ng-click="plus(product.id)" class="entry value-plus active">&nbsp;</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="invert">{{product.name}}</td>
+                    <td class="invert">{{product.price}}</td>
+                    <td class="invert">
+                        <div class="rem">
+                            <div ng-click="delete(product.id)" class="close1"> </div>
+                        </div>
+                    </td>
+                   
+                </tr>
+                <!--quantity-->
+                <!--quantity-->
+            </table>
+        </div>
+        <div class="checkout-left" ng-show="buy.length != 0">
+            <div class="checkout-left-basket">
+                <h4>Hóa Đơn</h4>
+                <ul>
+                    <li ng-repeat="product in buy">{{product.name}} <i>-</i> <span>{{product.price*product.quanity}} </span></li>
+                    <li>Dịch vụ vận chuyển <i>-</i> <span>12000</span></li>
+                    <li>Thành tiền: <i>-</i> <span>{{priceCart+12000}}</span></li>
+                </ul>
+            </div>
+            <div class="checkout-right-basket">
+                <a ui-sref="home"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Tiếp tục mua hàng</a>
+                <a ui-sref="hoadon">Thanh toán<span class="glyphicon glyphicon-menu-right" aria-hidden="true" style="margin-left: 20px;></span></a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
